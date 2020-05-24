@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8">
+    <title>bootstrap 85</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="style/style.css"> 
+    <link rel="stylesheet" href="style/owl.carousel.min.css">
+    <link rel="stylesheet" href="style/owl.theme.default.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Neucha&family=Open+Sans:wght@300;400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+</head>
+<body>
+
+<canvas id="bgCanvas"></canvas>
+<div class="zag">
+    <h1 name="main">Портфолио</h1>
+    <h1 class="" name="about_us">Профайл</h1>
+    <h1 class="" name="works">Примеры</h1>
+    <h1 class="" name="contacts">Контакты</h1>
+</div>
+
+
+<div class="main">
+    <div class="main_row_1"></div>
+    <div class="main_row_2">
+        <div name="main" class="el_name_main"></div>
+        <div name="about_us" class="el_name_about_us">
+            <p>Здравствуйте, меня зовут Виталий приветствую вас на своём сайте портфолио. Я занимась HTML-версткой сайтов. У меня полностью кроссбраузерная и адаптивная вёрстка. Знаю HTML / CSS / JS / JQery / Bootstrap 4, верстаю по PSD или Figma. Так же могу скопировать и изменить стороний лендинг.</p>
+        </div>
+        <div name="works" class="el_name_works">
+            <div class="carousel_work">
+                <div class="owl-carousel owl-theme">
+                    <div class="item car_bg">
+                       <a  href="Project25/project25.html">
+                           <img src="style/images/carousel_img_1.PNG" alt="">
+                       </a>
+                    </div>
+                    <div class="item">
+                        <a  href="Project22/project22.html">
+                            <img src="style/images/carousel_img_2.PNG" alt="">
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a  href="https://detlink.cc/">
+                            <img src="style/images/carousel_img_3.PNG" alt="">
+                        </a>
+                    </div>
+                </div>
+            </div>    
+        </div>
+        <div name="contacts" class="el_name_contacts ">
+            <div class="contact_display">
+                <div class="telega_dis">
+                    Мой телеграм: @AnimePoliceman
+                </div>
+                <div class="email_dis">
+                    Моя почта: geri_337@mail.ru
+                </div>
+            </div>
+            <div>
+                <div class="vk">
+                    <a href="https://vk.com/animepoliceman"><img src="style/images/icon.svg" alt=""></a>
+                </div>
+                <div class="telega">
+                     <a href="##" name="1"><img src="style/images/telegram-logo.svg" alt=""></a>
+                </div>
+                <div class="email">
+                     <a href="##" name="2"><img src="style/images/envelope.svg" alt=""></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<div class="menu">
+    <div class="open">
+        <div class="open_2">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <div class="menu_main dis_none">
+        <div class="nav">
+            <a href="##" id="main" name="1">Главная</a>
+            <a href="##" id="about_us" name="2">Обо мне</a>
+            <a href="##" id="works" name="3">Примеры</a>
+            <a href="##" id="contacts" name="4">Контакты</a>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="JS/jquery-3.4.1.min.js"></script>
+
+<script type="text/javascript">
+     var check = true;
+    
+    $('.open_2').click(function(){
+        if(check){
+            $('.open span:eq(0)').addClass('dis');
+            $('.open span:eq(3)').addClass('dis');
+            $('.menu_main').removeClass('dis_none');
+            $('.open span:eq(1)').css({'transform': 'rotate(45deg)' });
+            $('.open span:eq(2)').css({'transform': 'rotate(-45deg)' });
+            $('.menu_main').width(400);
+            $('.menu_main').height(400);
+            check = false;
+        }else{
+            $('.open span:eq(1)').css({'transform': 'rotate(0deg)' });
+            $('.open span:eq(2)').css({'transform': 'rotate(0deg)' });
+            $('.open span:eq(0)').removeClass('dis');
+            $('.open span:eq(3)').removeClass('dis');
+            $('.menu_main').width(100);
+            $('.menu_main').height(100);
+            check = true;
+        };
+    });
+     $(document).mouseup(function (e){ 
+		var div = $('.open_2'); 
+		if (!div.is(e.target) 
+		    && div.has(e.target).length === 0) { 
+            $('.open span:eq(1)').css({'transform': 'rotate(0deg)' });
+            $('.open span:eq(2)').css({'transform': 'rotate(0deg)' });
+            $('.open span:eq(0)').removeClass('dis');
+            $('.open span:eq(3)').removeClass('dis');
+            $('.menu_main').width(100);
+            $('.menu_main').height(100);
+            check = true;
+		}
+	});
+    
+    var pred = 1;
+
+    $('.zag h1').eq(pred-1).animate({opacity: 1},2500);
+    $('.nav a').click(function(){
+        var btn = $(this).attr('name');
+        $('.zag h1').eq(btn-1).delay( 1000 ).animate({opacity: 1},2000);
+        $('.zag h1').eq(pred-1).animate({opacity: 0},1000);
+        $('.main_row_2>div').eq(btn-1).delay( 1000 ).animate({opacity: 1},2500);
+        $('.main_row_2>div').eq(pred-1).animate({opacity: 0},1000);
+        pred = btn;
+    });
+    
+    
+    $('.telega a').click(function(){
+        $('.email_dis').animate({opacity: 0},500);
+        $('.email_dis').css({'z-index': 50});
+        $('.telega_dis').delay( 300 ).animate({opacity: 1},500);
+        $('.telega_dis').css({'z-index': 500});
+    });
+    $('.email a').click(function(){
+        $('.telega_dis').animate({opacity: 0},500);
+        $('.telega_dis').css({'z-index': 50});
+        $('.email_dis').delay( 300 ).animate({opacity: 1},500);
+        $('.email_dis').css({'z-index': 500});
+    });
+
+</script>
+
+<script type="text/javascript" src="JS/owl.carousel.min.js"></script>
+<script type="text/javascript" src="JS/kod_2.js"></script>
+<script type="text/javascript" src="JS/star.js"></script>
+</body>
+</html>
